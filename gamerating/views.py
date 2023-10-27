@@ -1,8 +1,15 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from gamerating.models import Game
 
 def index(request):
-    return HttpResponse("Game Ratings Index")
+    context = {
+            "games": Game.objects.all()
+        }
+    return render(request, "gamerating/index.html", context)
 
-def qualquer(request):
-    return HttpResponse("qualquer coisa")
+def detail(request, game_id):
+    game = Game.objects.get(pk=game_id)
+    context = {
+            "gamedetail": game
+        }
+    return render(request, "gamerating/detail.html", context)

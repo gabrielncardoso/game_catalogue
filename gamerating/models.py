@@ -13,10 +13,11 @@ class Game(models.Model):
     genre = models.CharField(max_length=20)
 
     def __str__(self):
-        return (f'{self.name}, {self.nplayers}, {self.genre}')
+        return (f'{self.name}')
     
     def avgscore(self):
-        return self.rating_set.aggregate(Avg("score"))
+        avg = self.rating_set.aggregate(Avg("score"))
+        return "%.2f" % avg["score__avg"]
 
 class Rating(models.Model):
     score = models.SmallIntegerField(default=3)

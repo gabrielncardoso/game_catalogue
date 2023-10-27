@@ -1,0 +1,19 @@
+{% if gamedetail %}
+<a href="/gamerating/">Back</a>
+<ul>
+    <li>
+        Name: {{ gamedetail.name }}
+    </li>
+    <li>
+        Number of players: {{ gamedetail.nplayers }}
+    </li>
+    <li>
+        Genre: {{ gamedetail.genre }}
+    </li>
+    <li>
+        Score: {{ gamedetail.avgscore }}
+    </li>
+</ul>
+{% else %}
+<p>No details are available</p>
+{% endif %}
